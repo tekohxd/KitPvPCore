@@ -1,0 +1,125 @@
+messages:
+  prefix: '&8[&cKitPvP&8]' #You can use this is any message with %prefix%
+  noperms: '&cYou do not have permission to do this.' #This is used when a player attempts to do something that they do not have access to
+  chatmessage: #Message given with /chat
+    - '&7===&cChat Commands&7==='
+    - '&c/chat slow <seconds:off> &7Enable slowchat for <seconds>.'
+    - '&c/chat clear &7Clear chat.'
+    - '&c/chat mute &7Mute chat.'
+  freeze:
+    noplayerspecified: '&cPlease specify a player.' #This is used when /freeze is used without specifying a player.
+    playerfrozen: '&c%player% &7has been frozen.' #This is used when a player has been frozen (Sent to everyone with kitpvp.freeze)
+    playerunfrozen: '&c%player% &7has been unfrozen.' #This is used when a player has been unfrozen (Sent to everyone with kitpvp.freeze)
+    playerleft: '&c%player% &7has left while frozen.' #This is used whena a player leaves while frozen. (Sent to everyone with kitpvp.freeze)
+    playernotfound: '&cPlayer not found.' #This is used when a player couldn't be found.
+    playerisfrozen: '&cThat player is currently frozen.' #This is used when a frozen player is attacked.
+    cannotdothis: '&cYou cannot do this while frozen.' #This is used when a frozen player is trying to do something not allowed.
+    message: #This is sent to the player when they're frozen.
+      - '&e&m----------------'
+      - '&cYou have been frozen.'
+      - '&cYou have 5 minutes to join'
+      - '&c%teamspeak%'
+      - '&e&m----------------'
+  staffchat:
+    format: '&7[&cStaff&7] &a%player%&8: &7%message%' #This is the format used for staffchat.
+    toggled: '&7StaffChat toggled %onoff%' #This is used when a player doesn't type a message to be sent, and toggles it.
+  report:
+    commandformat: '&c/report <player> <reason>' #This will be used when a player doesn't specify a player or a reason.
+    playernotfound: '&cPlayer not found.' #This will be used when a specified play isn't found.
+    oncooldown: '&cYou are currently on cooldown for /report' #This will be used when a player is still on cooldown.
+    format: #The format of a report that staff will see. %amount% returns how many times that player has been reported.
+      - '&e&m--------------'
+      - '&7Sender: &c%sender%'
+      - '&7Reported: &c%target%(%amount%)'
+      - ' '
+      - '&7Reason: &c%reason%'
+      - '&e&m--------------'
+  archerkit:
+    enabled: '&cArcher &7kit equipped.' #This is the message used when the archer kit is enabled.
+    disabled: '&cArcher &7kit unequipped.' #This is the message used when the archer kit is disabled.
+  bowhithealth: '&c%player% &7has &c%healthof10% &7health' #This is the message sent to a player when they get a bow shot on a player. (if true below) %healthof10% shows health out of 10. %healthof20% shows health out of 20.
+  playerkill:
+    killedplayer: '&a+$%amount%' #Message sent to the killer upon killing someone if enabled. Use %player% for the victim's name.
+    playerdied: #Possible placeholders: %prefix% %killer% %healthof20% %healthof10%
+      - '&e&m---------------------'
+      - '&7Killed by &c%killer%'
+      - '&7Their health: &c%healthof20%'
+      - '&e&m---------------------'
+  clearchat: '&7Chat has been cleared by &a%player%' #This is used when chat is cleared.
+  mutechat:
+    chatmuted: '&7Chat is currently muted' #This is used when chat is muted
+    chatisnowmuted: '&7Chat has been muted by &a%player%' #This is broadcasted when the chat has been muted
+    chatisnolongermuted: '&7Chat is no longer muted' #This is broadcasted when the chat is no longer muted
+    invalidnumber: '&7Must be an integer (No decimals or letters)' #This is used when someone uses invalid characters.
+    timedmute: '&7Chat successfully muted for &c%seconds% &7seconds.' #This is sent to a player that sets a timed chat mute.
+  slowchat:
+    chatslowed: '&cChat is currently slowed. %seconds% seconds per message' #This is sent to a player when they're typing too fast while slowchat is active
+    chatisnowslowed: '&7Chat has been slowed to &a%seconds% &7seconds per message.' #This is broadcasted when chat is slowed.
+    chatisnolongerslowed: '&7Chat is now back to normal.' #This is broadcasted when slowchat is disabled.
+    chatisntslowed: '&7Chat isn''t currently slowed.' #This is used when someone tries to disable slowchat when it's not enabled.
+    invalidnumber: '&7Must be an integer (No decimals or letters)' #This is used when someone uses invalid characters.
+    seconds: '&7SlowChat is &a%seconds% &7seconds per message' #This is used when a player types /chat slow
+  spamprevention:
+    warn: #This is sent to a player when they've been warned for spamming
+      - '&e&m-----------------'
+      - '&cStop spamming or you may be muted.'
+      - '&e&m-----------------'
+    muted: #This is sent to a player when they've been muted.
+      - '&e&m-----------------'
+      - '&cYou have been muted for Spamming'
+      - '&cThis mute lasts for %length% seconds'
+      - '&e&m-----------------'
+    currentlymuted: '&cYou are currently muted.' #This is sent to a player when they try to talk when muted.
+    unmuted: '&cYou are no longer muted.' #This is sent to a player when they are unmuted.
+  colonblocked: '&cYou can''t use colons in commands.' #This is sent when a player tries to use a colon
+
+settings:
+  discord: 'Change in config'
+  teamspeak: 'Change in config'
+  website: 'Change in config'
+  store: 'Change in config'
+
+  disableplayerop: false #Should players be able to op others? true = no
+  norain: true #Should it rain? true = no rain
+  nohunger: true #Should people get hungry? true = people wont get hungry
+  bowhithealth: true #Should we tell someone an enemy's health when they shoot them?
+  bowhitarcheronly: false #Should the above only work in the archer kit?
+  blockcolons: true #Should the use of colons be denied, ops can still use them.
+  killmoney:
+    enabled: true #Should this plugin handle giving the killer money?
+    healthbased: true #Should we multiply the amount earned by their health upon kill?
+    amount: 0.5 #multiplier for health given / Amount given if above is false
+
+  archerkit: false #Should we enable the archer kit? Wearing full leather armour gives you the effects specified below.
+  archerkiteffects:
+    - 'SPEED 2'
+    - 'DAMAGE_RESISTANCE 1'
+    - 'REGENERATION 1'
+
+  #Not tested properly and may not work as expected.
+  spamprevention:
+    enabled: false #Should we enable spamprevention? (Works similarly to slowchat, but works off of violations like anticheats)
+    enabledforcommands: false #Should we enable spamprevention for commands? (Same settings as below)
+    timer: 10 #How long should they have to wait before adding another violation? (In ticks, 20 ticks for every second) (Every 120 seconds violations are cleared for everyone)
+    warnvl: 2 #How many violations does a player need before we warn the player (wont be logged if you let this plugin do it)
+    warncommand: 'none' #What command would you like to use for warning people? %player% is the player name. Put 'none' for our system to handle it
+    warnreason: 'Stop spamming' #The reason for the built in warn, if you use your own command this wont be used
+    mutevl: 4 #How many violations does a player need before we mute the player (wont be logged if you let this plugin do it)
+    mutecommand: 'none' #What command would you like to use for muting people? %player% is the player name. Put 'none' for our system to handle it
+    mutelength: 120 #How long should the player be muted? (In seconds)
+    mutereason: 'Spamming' #The reason for the built in mute, if you use your own command this wont be used
+    preventcommandswhenmuted: false #Should we block the use of commands when a player is muted?
+
+  pinglimiter: #Kick players that have too high ping
+    enabled: false #Enabled true/false
+    limit: 120 #At what ping/ms should a player be kicked
+    interval: 5 #How long should we check every player's ping. (seconds)
+
+  freeze:
+    commandonleave: 'none' #This command while be used when a player leaves while frozen. Put 'none' for nothing to be executed.
+    blockcommands: true #Should we stop frozen players from using commands?
+  report:
+    cooldown: 30 #In seconds
+
+  customcommands:
+    #- 'command: response can contain spaces, but not ":"'
