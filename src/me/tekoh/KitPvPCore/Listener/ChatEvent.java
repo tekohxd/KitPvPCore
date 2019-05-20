@@ -39,12 +39,6 @@ public class ChatEvent implements Listener {
     @EventHandler
     public void chatHandler(AsyncPlayerChatEvent e) {
         Chat.playerTalked(e.getPlayer());
-        if (Chat.isPlayerMuted(e.getPlayer())) {
-            e.setCancelled(true);
-
-            e.getPlayer().sendMessage(Core.getInstance().getMessage("messages.spamprevention.currentlymuted"));
-            return;
-        }
         if (!Chat.isChatEnabled()) {
 
             if (e.getPlayer().hasPermission("kitpvp.mutechat.bypass")) return;

@@ -5,7 +5,6 @@ import me.tekoh.KitPvPCore.Listener.*;
 import me.tekoh.KitPvPCore.Utils.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +21,7 @@ public class Core extends JavaPlugin {
                         .replaceAll("&", "§"));
     }
 
-    static Core instance;
+    private static Core instance;
     public static Economy econ = null;
 
     public static Core getInstance() {
@@ -42,16 +41,15 @@ public class Core extends JavaPlugin {
         Logger.info("Loading classes.");
         Chat chat = new Chat();
         bStats bStats = new bStats(this);
-        PingLimiter pingLimiter = new PingLimiter();
         Freeze freeze = new Freeze();
         ArcherKit archerKit = new ArcherKit();
 
         if (!setupEconomy() ) {
-            getLogger().severe(String.format("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
-            getLogger().severe(String.format("[%s] - Economy disabled due to Vault/Economy plugin missing.", getDescription().getName()));
-            getLogger().severe(String.format("[%s] - Download vault: https://www.spigotmc.org/resources/vault.41918/", getDescription().getName()));
-            getLogger().severe(String.format("[%s] - Download economy: https://www.spigotmc.org/resources/saneeconomy-simple-but-featureful-economy.26223/", getDescription(). getName()));
-            getLogger().severe(String.format("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+            getLogger().severe("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            getLogger().severe("[%s] - Economy disabled due to Vault/Economy plugin missing.");
+            getLogger().severe("[%s] - Download vault: https://www.spigotmc.org/resources/vault.41918/");
+            getLogger().severe("[%s] - Download economy: https://www.spigotmc.org/resources/saneeconomy-simple-but-featureful-economy.26223/");
+            getLogger().severe("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             econenabled = false;
         }
 
@@ -80,9 +78,6 @@ public class Core extends JavaPlugin {
         registerEvents(new PlayerQuit(), new PlayerMove(), new PlayerHit(), new PreProcessCommand(), new PlayerJoin(), new ChatEvent(), new PlayerDeath());
 
         if (getConfig().getBoolean("settings.archerkit")) archerKit.armourChecks();
-        if (getConfig().getBoolean("settings.pinglimiter.enabled")) {
-            pingLimiter.startChecks(getConfig().getInt("settings.pinglimiter.interval"));
-        }
 
         Logger.info("Successfully enabled. Version: " + getDescription().getVersion());
     }

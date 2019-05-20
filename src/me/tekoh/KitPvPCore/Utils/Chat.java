@@ -18,7 +18,6 @@ public class Chat {
     private static int slowChat = 0;
 
     private static ArrayList<UUID> chatCooldown = new ArrayList<>();
-    private static ArrayList<UUID> muted = new ArrayList<>();
     private static ArrayList<UUID> spamPreventionList = new ArrayList<>();
     private static HashMap<UUID, Integer> violations = new HashMap<>();
 
@@ -119,41 +118,12 @@ public class Chat {
             warn(player);
         }
         if (violations.get(player.getUniqueId()) >= Core.getInstance().getConfig().getInt("settings.spamprevention.mutevl")) {
-            mute(player);
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand"));
         }
-    }
-
-    public static void mute(Player player) {
-        if (!Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand").equalsIgnoreCase("none")) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.warncommand")
-                    .replaceAll("%player%", player.getName()));
-            return;
-        }
-
-        for (String string : Core.getInstance().getConfig().getStringList("messages.spamprevention.muted")) {
-            String message = string.replaceAll("&", "§").replaceAll("%prefix%", Core.getInstance().getMessage("messages.prefix"))
-                    .replaceAll("%reason%", Core.getInstance().getMessage("settings.spamprevention.mutereason"))
-                    .replaceAll("%violations%", Integer.toString(violations.get(player.getUniqueId())));
-
-            player.sendMessage(message);
-        }
-
-        muted.add(player.getUniqueId());
-
-        Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                muted.remove(player.getUniqueId());
-            }
-        }, 20 * Core.getInstance().getConfig().getInt("settings.spamprevention.mutelength"));
     }
 
     public static boolean isPlayerOnCooldown(Player player) {
         return chatCooldown.contains(player.getUniqueId());
-    }
-
-    public static boolean isPlayerMuted(Player player) {
-        return muted.contains(player.getUniqueId());
     }
 
     private static void warn(Player player) {
