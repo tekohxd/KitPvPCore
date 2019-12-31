@@ -17,6 +17,14 @@ public class KitPvPCommand implements CommandExecutor {
 
             sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
             sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
+            if (sender.hasPermission("kitpvp.reload")) {
+                sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+            }
+
+            if (args[0].equalsIgnoreCase("reload")) {
+                Core.getInstance().reloadConfig();
+                sender.sendMessage("§aConfiguration reloaded.");
+            }
 
             return true;
         }

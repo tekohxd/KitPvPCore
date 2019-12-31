@@ -21,6 +21,10 @@ public class Core extends JavaPlugin {
                         .replaceAll("&", "§"));
     }
 
+    /*
+    TODO: finish testing for 1.14 (test everything)
+     */
+
     private static Core instance;
     public static Economy econ = null;
 
@@ -45,11 +49,11 @@ public class Core extends JavaPlugin {
         ArcherKit archerKit = new ArcherKit();
 
         if (!setupEconomy() ) {
-            getLogger().severe("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            getLogger().severe("[%s] - Economy disabled due to Vault/Economy plugin missing.");
-            getLogger().severe("[%s] - Download vault: https://www.spigotmc.org/resources/vault.41918/");
-            getLogger().severe("[%s] - Download economy: https://www.spigotmc.org/resources/saneeconomy-simple-but-featureful-economy.26223/");
-            getLogger().severe("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Logger.error("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Logger.error("Economy disabled due to Vault/Economy plugin missing");
+            Logger.error("Download vault: https://www.spigotmc.org/resources/vault.41918/");
+            Logger.error("If vault is correctly installed, please install a vault compatible economy plugin");
+            Logger.error("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             econenabled = false;
         }
 

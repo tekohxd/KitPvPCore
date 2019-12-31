@@ -9,3 +9,4 @@ kitpvp.spamprevention.bypass // Bypass spam prevention.
 kitpvp.chat // Use chat commands.
 kitpvp.rename // Rename items
 kitpvp.rename.colour // Use colour and formatting
+kitpvp.reload // reload config
