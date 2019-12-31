@@ -96,16 +96,16 @@ settings:
     - 'DAMAGE_RESISTANCE 1'
     - 'REGENERATION 1'
 
-  #Not tested properly and may not work as expected.
+  #Should work, may need better setup to work as intended, i recommend you put effort into tuning if you want it to work well
   spamprevention:
     enabled: false #Should we enable spamprevention? (Works similarly to slowchat, but works off of violations like anticheats)
     enabledforcommands: false #Should we enable spamprevention for commands? (Same settings as below)
-    timer: 10 #How long should they have to wait before adding another violation? (In ticks, 20 ticks for every second) (Every 120 seconds violations are cleared for everyone)
+    timer: 15 #How long should they have to wait before adding another violation? (In ticks, 20 ticks for every second) (Every 120 seconds violations will be cleared for that person)
     warnvl: 2 #How many violations does a player need before we warn the player (wont be logged if you let this plugin do it)
     warncommand: 'none' #What command would you like to use for warning people? %player% is the player name.
     warnreason: 'Stop spamming' #The reason for the built in warn, if you use your own command this wont be used
     mutevl: 4 #How many violations does a player need before we mute the player (wont be logged if you let this plugin do it)
-    mutecommand: 'mute %player% 5m Spamming' #What command would you like to use for muting people? %player% is the player name. Put 'none' for our system to handle it
+    mutecommand: 'mute %player% 5m Spamming' #What command would you like to use for muting people? %player% is the player name. You must use an external plugin for this feature.
     mutelength: 120 #How long should the player be muted? (In seconds)
     mutereason: 'Spamming' #The reason for the built in mute, if you use your own command this wont be used
     preventcommandswhenmuted: false #Should we block the use of commands when a player is muted?

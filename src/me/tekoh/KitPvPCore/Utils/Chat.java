@@ -21,15 +21,6 @@ public class Chat {
     private static ArrayList<UUID> spamPreventionList = new ArrayList<>();
     private static HashMap<UUID, Integer> violations = new HashMap<>();
 
-    public Chat() {
-        Bukkit.getScheduler().runTaskTimerAsynchronously(Core.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                violations.clear();
-            }
-        }, 20, 20 * 120);
-    }
-
     public static void clearChat(Player cleared) {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -100,8 +91,13 @@ public class Chat {
         if (player.hasPermission("kitpvp.spamprevention.bypass")) return;
 
         if (spamPreventionList.contains(player.getUniqueId())) {
-            if (!violations.containsKey(player.getUniqueId())) violations.put(player.getUniqueId(), 0);
-            violations.put(player.getUniqueId(), violations.get(player.getUniqueId()) + 1);
+            if (!violations.containsKey(player.getUniqueId())) {
+                violations.put(player.getUniqueId(), 1);
+                Logger.info(player.getName() + " violations set to 1");
+            } else {
+                violations.put(player.getUniqueId(), violations.get(player.getUniqueId()) + 1);
+                Logger.info(player.getName() + " +1 violation (" + violations.get(player.getUniqueId()) + ")");
+            }
         } else {
             spamPreventionList.add(player.getUniqueId());
 
@@ -111,14 +107,16 @@ public class Chat {
                     spamPreventionList.remove(player.getUniqueId());
                 }
             }, Core.getInstance().getConfig().getInt("settings.spamprevention.timer"));
-
+            return;
         }
 
         if (violations.get(player.getUniqueId()) == Core.getInstance().getConfig().getInt("settings.spamprevention.warnvl")) {
             warn(player);
+            Logger.info(player.getName() + " warned for spamming");
         }
         if (violations.get(player.getUniqueId()) >= Core.getInstance().getConfig().getInt("settings.spamprevention.mutevl")) {
-            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand"));
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand").replaceAll("%player%", player.getName()));
+            Logger.info(player.getName() + " muted for spamming");
         }
     }
 
