@@ -22,7 +22,10 @@ public class Core extends JavaPlugin {
     }
 
     /*
-    TODO: finish testing for 1.14 (test everything)
+    TODO: /support
+    TODO: /website
+    TODO: /store
+    TODO: /discord
      */
 
     private static Core instance;
@@ -33,7 +36,6 @@ public class Core extends JavaPlugin {
     }
 
     public static String discord;
-    public static String teamspeak;
     public static String website;
     public static String store;
 
@@ -42,11 +44,8 @@ public class Core extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        Logger.info("Loading classes.");
-        Chat chat = new Chat();
+        Logger.info("Loading classes . .");
         bStats bStats = new bStats(this);
-        Freeze freeze = new Freeze();
-        ArcherKit archerKit = new ArcherKit();
 
         if (!setupEconomy() ) {
             Logger.error("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -57,16 +56,15 @@ public class Core extends JavaPlugin {
             econenabled = false;
         }
 
-        Logger.info("Loading files.");
+        Logger.info("Loading files . .");
 
         loadConfig();
 
         discord = getConfig().getString("settings.discord");
-        teamspeak = getConfig().getString("settings.teamspeak");
         website = getConfig().getString("settings.website");
         store = getConfig().getString("settings.store");
 
-        Logger.info("Loading commands.");
+        Logger.info("Loading commands . .");
 
         getCommand("kitpvp").setExecutor(new KitPvPCommand());
         getCommand("freeze").setExecutor(new FreezeCommand());
@@ -75,13 +73,16 @@ public class Core extends JavaPlugin {
         getCommand("chat").setExecutor(new ChatCommand());
         getCommand("rename").setExecutor(new RenameCommand());
 
-        Logger.info("Loading events.");
+        Logger.info("Loading events . .");
 
         if (getConfig().getBoolean("settings.norain")) registerEvents(new NoRain());
         if (getConfig().getBoolean("settings.nohunger")) registerEvents(new NoHunger());
         registerEvents(new PlayerQuit(), new PlayerMove(), new PlayerHit(), new PreProcessCommand(), new PlayerJoin(), new ChatEvent(), new PlayerDeath());
 
-        if (getConfig().getBoolean("settings.archerkit")) archerKit.armourChecks();
+        if (getConfig().getBoolean("settings.archerkit")) {
+            ArcherKit.armourChecks();
+            Logger.info("Armour checks enabled");
+        }
 
         Logger.info("Successfully enabled. Version: " + getDescription().getVersion());
     }

@@ -19,7 +19,7 @@ public class Freeze {
             frozen.add(player);
 
             for (String entry : Core.getInstance().getConfig().getStringList("messages.freeze.message")) {
-                String message = entry.replaceAll("&", "§").replaceAll("%discord%", Core.getInstance().discord).replaceAll("%teamspeak%", Core.getInstance().teamspeak);
+                String message = entry.replaceAll("&", "§").replaceAll("%discord%", Core.getInstance().discord);
 
                 player.sendMessage(message);
             }

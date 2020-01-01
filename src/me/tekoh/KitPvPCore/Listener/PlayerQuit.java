@@ -17,7 +17,6 @@ public class PlayerQuit implements Listener {
     @EventHandler
     public void freezeHandler(PlayerQuitEvent e) {
         if (Freeze.isFrozen(e.getPlayer())) {
-            Freeze.setFrozen(e.getPlayer(), false);
 
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendMessage(Core.getInstance().getMessage("messages.freeze.playerleft").replaceAll("%player%", e.getPlayer().getName()));

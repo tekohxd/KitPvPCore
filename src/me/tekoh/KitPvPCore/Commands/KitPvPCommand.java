@@ -1,6 +1,7 @@
 package me.tekoh.KitPvPCore.Commands;
 
 import me.tekoh.KitPvPCore.Core;
+import me.tekoh.KitPvPCore.Utils.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,8 +23,9 @@ public class KitPvPCommand implements CommandExecutor {
                 sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
                 sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
                 if (sender.hasPermission("kitpvp.reload")) {
-                    sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+                    sender.sendMessage("§aYou can reload the plugin by running /kitpvp reload");
                 }
+                return true;
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
@@ -32,17 +34,19 @@ public class KitPvPCommand implements CommandExecutor {
                     return true;
                 }
                 Core.getInstance().reloadConfig();
-                sender.sendMessage("§aConfiguration reloaded");
+                Core.getInstance().getServer().getPluginManager().disablePlugin(Core.getInstance());
+                Core.getInstance().getServer().getPluginManager().enablePlugin(Core.getInstance());
+                sender.sendMessage("§aPlugin reloaded");
+                Logger.info("Plugin reloaded by " + sender.getName());
                 return true;
-                
+
             } else {
                 sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
                 sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
                 if (sender.hasPermission("kitpvp.reload")) {
-                    sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+                    sender.sendMessage("§aYou can reload the plugin by running /kitpvp reload");
                 }
             }
-
             return true;
         }
 

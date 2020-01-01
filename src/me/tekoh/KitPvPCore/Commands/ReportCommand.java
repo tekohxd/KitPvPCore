@@ -45,6 +45,11 @@ public class ReportCommand implements CommandExecutor {
                 return true;
             }
 
+            if (target == sender) {
+                sender.sendMessage(Core.getInstance().getMessage("messages.report.yourself"));
+                return true;
+            }
+
             StringBuilder str = new StringBuilder();
             for (int i = 1; i < args.length; i++) {
                 str.append(args[i] + " ");

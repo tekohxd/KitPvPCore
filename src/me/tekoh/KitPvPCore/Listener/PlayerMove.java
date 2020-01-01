@@ -16,7 +16,7 @@ public class PlayerMove implements Listener {
     public void freezeHandler(PlayerMoveEvent e) {
         if (Freeze.isFrozen(e.getPlayer())) {
 
-            if (e.getFrom().distanceSquared(e.getTo()) > 0.0) {
+            if (e.getTo().getBlockX() != e.getFrom().getBlockX() || e.getTo().getBlockZ() != e.getFrom().getBlockZ()) {
                 e.getPlayer().teleport(e.getFrom());
             }
 

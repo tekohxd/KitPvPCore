@@ -18,7 +18,7 @@ messages:
       - '&e&m----------------'
       - '&cYou have been frozen.'
       - '&cYou have 5 minutes to join'
-      - '&c%teamspeak%'
+      - '&c%discord%'
       - '&e&m----------------'
   staffchat:
     format: '&7[&cStaff&7] &a%player%&8: &7%message%' #This is the format used for staffchat.
@@ -27,6 +27,7 @@ messages:
     commandformat: '&c/report <player> <reason>' #This will be used when a player doesn't specify a player or a reason.
     playernotfound: '&cPlayer not found.' #This will be used when a specified play isn't found.
     oncooldown: '&cYou are currently on cooldown for /report' #This will be used when a player is still on cooldown.
+    yourself: '&cYou cannot report yourself'
     format: #The format of a report that staff will see. %amount% returns how many times that player has been reported.
       - '&e&m--------------'
       - '&7Sender: &c%sender%'
@@ -40,10 +41,10 @@ messages:
   bowhithealth: '&c%player% &7has &c%healthof10% &7health' #This is the message sent to a player when they get a bow shot on a player. (if true below) %healthof10% shows health out of 10. %healthof20% shows health out of 20.
   playerkill:
     killedplayer: '&a+$%amount%' #Message sent to the killer upon killing someone if enabled. Use %player% for the victim's name.
-    playerdied: #Possible placeholders: %prefix% %killer% %healthof20% %healthof10%
+    playerdied: #Possible placeholders: %prefix% %killer% %health%
       - '&e&m---------------------'
       - '&7Killed by &c%killer%'
-      - '&7Their health: &c%healthof20%'
+      - '&7Their health: &c%health%'
       - '&e&m---------------------'
   clearchat: '&7Chat has been cleared by &a%player%' #This is used when chat is cleared.
   mutechat:
@@ -75,7 +76,6 @@ messages:
 
 settings:
   discord: 'Change in config'
-  teamspeak: 'Change in config'
   website: 'Change in config'
   store: 'Change in config'
 
