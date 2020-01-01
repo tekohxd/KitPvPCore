@@ -21,7 +21,7 @@ public class KitPvPCommand implements CommandExecutor {
             if (args.length == 0) {
 
                 sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
-                sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
+                sender.sendMessage("§7Developed by §cTekoh");
                 if (sender.hasPermission("kitpvp.reload")) {
                     sender.sendMessage("§aYou can reload the plugin by running /kitpvp reload");
                 }
@@ -42,7 +42,7 @@ public class KitPvPCommand implements CommandExecutor {
 
             } else {
                 sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
-                sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
+                sender.sendMessage("§7Developed by §cTekoh");
                 if (sender.hasPermission("kitpvp.reload")) {
                     sender.sendMessage("§aYou can reload the plugin by running /kitpvp reload");
                 }

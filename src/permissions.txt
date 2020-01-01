@@ -7,6 +7,9 @@ kitpvp.mutechat.bypass // Bypass muted chat
 kitpvp.slowchat.bypass // Bypass slowchat
 kitpvp.spamprevention.bypass // Bypass spam prevention.
 kitpvp.chat // Use chat commands.
+kitpvp.chat.slow // slow chat
+kitpvp.chat.clear // clear chat
+kitpvp.chat.mute // mute chat
 kitpvp.rename // Rename items
 kitpvp.rename.colour // Use colour and formatting
 kitpvp.reload // reload config

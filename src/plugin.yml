@@ -1,7 +1,7 @@
 name: KitPvPCore
-version: 0.1
+version: 1.0-RELEASE
 main: me.tekoh.KitPvPCore.Core
-description: A KitPvP Core made by Tekoh/MaxTheMango
+description: A KitPvP Core made by Tekoh
 depend: [Vault]
 
 commands:
@@ -25,3 +25,12 @@ commands:
   rename:
     usage: /<command>
     description: Rename
+  discord:
+    usage: /<command>
+    description: Discord server
+  website:
+    usage: /<command>
+    description: Website
+  store:
+    usage: /<command>
+    description: Store

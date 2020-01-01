@@ -72,6 +72,9 @@ public class Core extends JavaPlugin {
         getCommand("report").setExecutor(new ReportCommand());
         getCommand("chat").setExecutor(new ChatCommand());
         getCommand("rename").setExecutor(new RenameCommand());
+        getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("website").setExecutor(new WebsiteCommand());
+        getCommand("store").setExecutor(new StoreCommand());
 
         Logger.info("Loading events . .");
 
