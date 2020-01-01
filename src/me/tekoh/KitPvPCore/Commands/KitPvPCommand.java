@@ -15,15 +15,32 @@ public class KitPvPCommand implements CommandExecutor {
 
         if (cmd.getName().equalsIgnoreCase("kitpvp")) {
 
-            sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
-            sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
-            if (sender.hasPermission("kitpvp.reload")) {
-                sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+
+
+            if (args.length == 0) {
+
+                sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
+                sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
+                if (sender.hasPermission("kitpvp.reload")) {
+                    sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+                }
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
+                if (!sender.hasPermission("kitpvp.reload")) {
+                    sender.sendMessage(Core.getInstance().getMessage("messages.noperms"));
+                    return true;
+                }
                 Core.getInstance().reloadConfig();
-                sender.sendMessage("§aConfiguration reloaded.");
+                sender.sendMessage("§aConfiguration reloaded");
+                return true;
+                
+            } else {
+                sender.sendMessage("§cKitPvP " + Core.getInstance().getDescription().getVersion());
+                sender.sendMessage("§7Developed by §cTekoh§7/§cMaxTheMango");
+                if (sender.hasPermission("kitpvp.reload")) {
+                    sender.sendMessage("§aYou can reload the config by running /kitpvp reload");
+                }
             }
 
             return true;

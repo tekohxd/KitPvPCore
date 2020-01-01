@@ -115,7 +115,8 @@ public class Chat {
             Logger.info(player.getName() + " warned for spamming");
         }
         if (violations.get(player.getUniqueId()) >= Core.getInstance().getConfig().getInt("settings.spamprevention.mutevl")) {
-            Bukkit.getScheduler().callSyncMethod(Core.getInstance(), () -> Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand").replaceAll("%player%", player.getName())));
+            Bukkit.getScheduler().callSyncMethod(Core.getInstance(), () -> Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),
+                    Core.getInstance().getConfig().getString("settings.spamprevention.mutecommand").replaceAll("%player%", player.getName())));
             Logger.info(player.getName() + " muted for spamming");
         }
     }
@@ -128,7 +129,8 @@ public class Chat {
 
         if (!Core.getInstance().getConfig().getString("settings.spamprevention.warncommand").equalsIgnoreCase("none")) {
 
-            Bukkit.getScheduler().callSyncMethod(Core.getInstance(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Core.getInstance().getConfig().getString("settings.spamprevention.warncommand")));
+            Bukkit.getScheduler().callSyncMethod(Core.getInstance(), () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                    Core.getInstance().getConfig().getString("settings.spamprevention.warncommand")));
 
             return;
         }
