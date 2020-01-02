@@ -1,6 +1,6 @@
 name: KitPvPCore
 version: 1.0-RELEASE
-main: me.tekoh.KitPvPCore.Core
+main: wtf.tekoh.KitPvPCore.Core
 description: A KitPvP Core made by Tekoh
 depend: [Vault]
 
@@ -34,3 +34,6 @@ commands:
   store:
     usage: /<command>
     description: Store
+  support:
+    usage: /<command>
+    description: support

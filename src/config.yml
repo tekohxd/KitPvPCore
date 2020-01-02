@@ -1,5 +1,4 @@
 messages:
-  prefix: '&8[&cKitPvP&8]' #You can use this is any message with %prefix%
   noperms: '&cYou do not have permission to do this.' #This is used when a player attempts to do something that they do not have access to
   chatmessage: #Message given with /chat
     - '&7===&cChat Commands&7==='
@@ -26,26 +25,34 @@ messages:
   report:
     commandformat: '&c/report <player> <reason>' #This will be used when a player doesn't specify a player or a reason.
     playernotfound: '&cPlayer not found.' #This will be used when a specified play isn't found.
-    oncooldown: '&cYou are currently on cooldown for /report' #This will be used when a player is still on cooldown.
-    yourself: '&cYou cannot report yourself'
+    oncooldown: '&cYou must wait before reporting again' #This will be used when a player is still on cooldown.
+    yourself: '&cYou cannot report yourself' #This will be used when someone tries to report themself
+    reportsent: '&aThank you for your report' #This will be used when someone reports a player
     format: #The format of a report that staff will see. %amount% returns how many times that player has been reported.
-      - '&e&m--------------'
+      - '&4&m---&cPlayer Report&4&m---'
       - '&7Sender: &c%sender%'
       - '&7Reported: &c%target%(%amount%)'
       - ' '
       - '&7Reason: &c%reason%'
-      - '&e&m--------------'
+      - '&4&m--------------'
+  support:
+    commandformat: '&c/support <text>' #This will be used when a player types /support
+    oncooldown: '&cYou must wait before submitting another support request' #This will be used when the player is still on cooldown
+    requestsent: '&aYour request has been sent to staff' #This will be sent to the player when they request support
+    format: #The format of a report that staff will see. %amount% returns how many times that player has been reported.
+      - '&3&m---&bSupport Request&3&m---'
+      - '&aPlayer: %player%'
+      - '%request%'
+      - '&3&m--------------'
   archerkit:
     enabled: '&cArcher &7kit equipped.' #This is the message used when the archer kit is enabled.
     disabled: '&cArcher &7kit unequipped.' #This is the message used when the archer kit is disabled.
-  bowhithealth: '&c%player% &7has &c%healthof10% &7health' #This is the message sent to a player when they get a bow shot on a player. (if true below) %healthof10% shows health out of 10. %healthof20% shows health out of 20.
+  bowhithealth: '&c%player% &7has &c%health% &7health' #This is the message sent to a player when they get a bow shot on a player. (if true below)
   playerkill:
     killedplayer: '&a+$%amount%' #Message sent to the killer upon killing someone if enabled. Use %player% for the victim's name.
-    playerdied: #Possible placeholders: %prefix% %killer% %health%
-      - '&e&m---------------------'
+    playerdied: #Possible placeholders: %killer% %health%
       - '&7Killed by &c%killer%'
       - '&7Their health: &c%health%'
-      - '&e&m---------------------'
   clearchat: '&7Chat has been cleared by &a%player%' #This is used when chat is cleared.
   mutechat:
     chatmuted: '&7Chat is currently muted' #This is used when chat is muted
@@ -62,24 +69,17 @@ messages:
     seconds: '&7SlowChat is &a%seconds% &7seconds per message' #This is used when a player types /chat slow
   spamprevention:
     warn: #This is sent to a player when they've been warned for spamming
-      - '&e&m-----------------'
+      - '&4&m-----------------'
       - '&cStop spamming or you may be muted.'
-      - '&e&m-----------------'
-    muted: #This is sent to a player when they've been muted.
-      - '&e&m-----------------'
-      - '&cYou have been muted for Spamming'
-      - '&cThis mute lasts for %length% seconds'
-      - '&e&m-----------------'
-    currentlymuted: '&cYou are currently muted.' #This is sent to a player when they try to talk when muted.
-    unmuted: '&cYou are no longer muted.' #This is sent to a player when they are unmuted.
-  colonblocked: '&cYou can''t use colons in commands.' #This is sent when a player tries to use a colon
+      - '&4&m-----------------'
+  colonblocked: '&cYou can''t use colons in commands' #This is sent when a player tries to use a colon
 
 settings:
   discord: 'Change in config'
   website: 'Change in config'
   store: 'Change in config'
 
-  disableplayerop: false #Should players be able to op others? true = no
+  disableplayerop: false #Should players be able to op others? true means the command is disabled for players
   norain: true #Should it rain? true = no rain
   nohunger: true #Should people get hungry? true = people wont get hungry
   bowhithealth: true #Should we tell someone an enemy's health when they shoot them?
@@ -114,7 +114,7 @@ settings:
     commandonleave: 'none' #This command while be used when a player leaves while frozen. Put 'none' for nothing to be executed.
     blockcommands: true #Should we stop frozen players from using commands?
   report:
-    cooldown: 15 #In seconds
+    cooldown: 15 #In seconds (this cooldown will also be used for the /support command)
 
   customcommands:
     #- 'command: response can contain spaces, but not ":"'

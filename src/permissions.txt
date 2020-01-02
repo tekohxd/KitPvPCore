@@ -2,6 +2,8 @@ kitpvp.freeze // Freeze people and be notified when a player is frozen / leaves 
 kitpvp.staffchat // Use staff chat
 kitpvp.report // Make reports
 kitpvp.report.see // See reports
+kitpvp.support // Make support requests
+kitpvp.support.see // See support requests
 kitpvp.clearchat.bypass // Their chat doesn't get cleared.
 kitpvp.mutechat.bypass // Bypass muted chat
 kitpvp.slowchat.bypass // Bypass slowchat
