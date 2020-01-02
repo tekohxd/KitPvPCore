@@ -42,7 +42,7 @@ messages:
     format: #The format of a report that staff will see. %amount% returns how many times that player has been reported.
       - '&3&m---&bSupport Request&3&m---'
       - '&aPlayer: %player%'
-      - '%request%'
+      - '&a%request%'
       - '&3&m--------------'
   archerkit:
     enabled: '&cArcher &7kit equipped.' #This is the message used when the archer kit is enabled.

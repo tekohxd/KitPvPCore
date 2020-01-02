@@ -28,6 +28,11 @@ public class SupportCommand implements CommandExecutor {
                 return true;
             }
 
+            if (cooldown.contains((Player) sender)) {
+                sender.sendMessage(Core.getInstance().getMessage("messages.support.oncooldown"));
+                return true;
+            }
+
             if (args.length == 0) {
                 sender.sendMessage(Core.getInstance().getMessage("messages.support.commandformat"));
                 return true;

@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class PreProcessCommand implements Listener {
 
-    private HashMap<String, String> customCommands = new HashMap<>();
+    private static HashMap<String, String> customCommands = new HashMap<>();
 
     public PreProcessCommand() {
         Bukkit.getScheduler().runTaskAsynchronously(Core.getInstance(), new Runnable() {
@@ -32,7 +32,7 @@ public class PreProcessCommand implements Listener {
     }
 
     @EventHandler
-    public void colonBlocker(PlayerCommandPreprocessEvent e) {
+    public static void colonBlocker(PlayerCommandPreprocessEvent e) {
         if (e.getPlayer().isOp()) return;
 
         if (e.getMessage().startsWith("/") && e.getMessage().contains(":")) {
@@ -42,7 +42,7 @@ public class PreProcessCommand implements Listener {
     }
 
     @EventHandler
-    public void freezeHandler(PlayerCommandPreprocessEvent e) {
+    public static void freezeHandler(PlayerCommandPreprocessEvent e) {
 
         if (Core.getInstance().getConfig().getBoolean("settings.disableplayerop")) {
             if (e.getMessage().startsWith("/op")) e.setCancelled(true);
