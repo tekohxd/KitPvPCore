@@ -9,31 +9,32 @@ commands:
     usage: /<command>
     description: Plugin info.
   freeze:
-    usage: /<command>
+    usage: /<command> <player>
     description: Freeze a player.
-    aliases: [ss, f]
+    aliases: [ss]
   staffchat:
-    usage: /<command>
+    usage: /<command> <message>
     description: Use staffchat.
-    aliases: [c, sc]
+    aliases: [sc]
   report:
-    usage: /<command>
+    usage: /<command> <report> <reason>
     description: Report a player.
   chat:
     usage: /<command>
     description: Chat options
   rename:
-    usage: /<command>
-    description: Rename
+    usage: /<command> <name>
+    description: Rename an item
   discord:
     usage: /<command>
     description: Discord server
   website:
     usage: /<command>
-    description: Website
+    description: Website link
   store:
     usage: /<command>
-    description: Store
+    description: Store link
   support:
-    usage: /<command>
-    description: support
+    usage: /<command> <request>
+    description: Get support from staff
+    aliases: [helpop]

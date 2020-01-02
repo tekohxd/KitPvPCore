@@ -22,10 +22,6 @@ public class Core extends JavaPlugin {
                         .replaceAll("&", "§");
     }
 
-    /*
-    TODO: /support
-     */
-
     private static Core instance;
     public static Economy econ = null;
 
