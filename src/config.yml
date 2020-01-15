@@ -100,6 +100,7 @@ settings:
   spamprevention:
     enabled: false #Should we enable spamprevention? (Works similarly to slowchat, but works off of violations like anticheats)
     enabledforcommands: false #Should we enable spamprevention for commands? (Same settings as below)
+    decay: 120 #How long should they have to wait before their violations are cleared? in seconds
     timer: 15 #How long should they have to wait before adding another violation? (In ticks, 20 ticks for every second) (Every 120 seconds violations will be cleared for that person)
     warnvl: 2 #How many violations does a player need before we warn the player (wont be logged if you let this plugin do it)
     warncommand: 'none' #What command would you like to use for warning people? %player% is the player name.

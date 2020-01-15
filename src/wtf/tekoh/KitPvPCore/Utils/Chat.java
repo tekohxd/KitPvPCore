@@ -94,6 +94,12 @@ public class Chat {
             if (!violations.containsKey(player.getUniqueId())) {
                 violations.put(player.getUniqueId(), 1);
                 Logger.info(player.getName() + " violations set to 1");
+                Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), new Runnable() {
+                    @Override
+                    public void run() {
+                        violations.remove(player.getUniqueId());
+                    }
+                }, Core.getInstance().getConfig().getInt("settings.spamprevention.decay"));
             } else {
                 violations.put(player.getUniqueId(), violations.get(player.getUniqueId()) + 1);
                 Logger.info(player.getName() + " +1 violation (" + violations.get(player.getUniqueId()) + ")");
