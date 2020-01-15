@@ -1,4 +1,6 @@
 # KitPvPCore
 KitPvP Core plugin <br />
 
-I made this for an old kitpvp server i worked on, focusing on making it ready for spigot.
+Feel free to download and modify code to your liking, but dont take credit for my work. <br />
+
+If you find any bugs or have issues with the plugin please submit a request here: https://github.com/tekohxd/KitPvPCore/issues
