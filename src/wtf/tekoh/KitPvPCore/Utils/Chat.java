@@ -99,7 +99,7 @@ public class Chat {
                     public void run() {
                         violations.remove(player.getUniqueId());
                     }
-                }, Core.getInstance().getConfig().getInt("settings.spamprevention.decay"));
+                }, Core.getInstance().getConfig().getInt("settings.spamprevention.decay") * 20);
             } else {
                 violations.put(player.getUniqueId(), violations.get(player.getUniqueId()) + 1);
                 Logger.info(player.getName() + " +1 violation (" + violations.get(player.getUniqueId()) + ")");
